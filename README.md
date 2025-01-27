@@ -20,16 +20,11 @@ No projeto, a **View** é implementada pela `MainActivity`, que:
 - Observa o **LiveData** do **PostagemViewModel** para atualizar a UI com a lista de postagens.  
 - Chama o **ViewModel** no método `onStart()` para iniciar o fluxo de dados.
 
-### 🟪 ViewModel  
+### 🟫 ViewModel  
 Responsável por:  
 - Fornecer dados para a **View** por meio de **LiveData**.  
 - Controlar o fluxo de dados entre o **Model** e a **View**.  
 - Solicitar dados do **Model** e expor de maneira que a **View** possa observar e reagir a mudanças.
-
-### 🟦 Model  
-Responsável por:  
-- Fazer as requisições à API.  
-- Retornar os dados para o **ViewModel**.
 
 ## Fluxo de Funcionamento  
 1. A **View** (`MainActivity`) chama o **ViewModel** no método `onStart()` para iniciar a solicitação de dados.  
