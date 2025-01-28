@@ -8,12 +8,11 @@ import com.brunocarvalho.apicommvvm.model.PostagemAPI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class PostagemViewModel: ViewModel() {
+class PostagemViewModel(private val postagemAPI: PostagemAPI): ViewModel() {
 
     val listaPostagens = MutableLiveData<List<Postagem>>()
 
     fun recuperarPostagens(){
-        val postagemAPI = PostagemAPI()
 
         viewModelScope.launch(Dispatchers.IO) {
             val postagens = postagemAPI.recuperarPostagens()

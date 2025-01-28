@@ -1,15 +1,13 @@
 package com.brunocarvalho.apicommvvm.model
 
-import com.brunocarvalho.apicommvvm.api.RetrofitService
+import com.brunocarvalho.apicommvvm.api.JsonPlaceAPI
 
-class PostagemAPI {
+class PostagemAPI(private val jsonPlaceAPI: JsonPlaceAPI) {
 
     suspend fun recuperarPostagens(): List<Postagem> {
 
-        val jsonPlace = RetrofitService.getJsonPlace()
-
         try {
-            val retorno = jsonPlace.recuperarPostagens()
+            val retorno = jsonPlaceAPI.recuperarPostagens()
             if(retorno.isSuccessful){
                 retorno.body()?.let { postagens ->
                     return postagens

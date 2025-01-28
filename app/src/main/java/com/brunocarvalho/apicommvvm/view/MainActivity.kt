@@ -3,8 +3,12 @@ package com.brunocarvalho.apicommvvm.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.brunocarvalho.apicommvvm.api.RetrofitService
 import com.brunocarvalho.apicommvvm.databinding.ActivityMainBinding
+import com.brunocarvalho.apicommvvm.model.DependencyProvider
+import com.brunocarvalho.apicommvvm.model.PostagemAPI
 import com.brunocarvalho.apicommvvm.viewmodel.PostagemViewModel
+import com.brunocarvalho.apicommvvm.viewmodel.PostagemViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +22,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        postagemViewModel = ViewModelProvider(this)[PostagemViewModel::class.java]
+        val postagemAPI = DependencyProvider.postagemRepository
+
+        postagemViewModel = ViewModelProvider(this, PostagemViewModelFactory(postagemAPI))[PostagemViewModel::class.java]
 
         postagemViewModel.listaPostagens.observe(this){ postagens ->
 
